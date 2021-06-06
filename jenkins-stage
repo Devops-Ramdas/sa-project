@@ -28,6 +28,18 @@ pipeline {
                 sh 'cd sa-logic && docker build -t sa-logic:1.0.0 .'
             }
         }
+
+	stage('Docker image Tag with version') {
+            steps {
+                sh 'docker tag sa-frontend:1.0.0 devopsramdas/sa-frontend:1.0.0 && docker tag sa-webapp:1.0.0 devopsramdas/sa-webapp:1.0.0 && docker tag sa-logic:1.0.0 devopsramdas/sa-logic:1.0.0'
+            }
+        }
+	stage('Docker image push') {
+            steps {
+                sh 'cat ~/dockerid.txt | docker login --username devopsramdas --password-stdin && docker push devopsramdas/sa-frontend:1.0.0 && docker push devopsramdas/sa-webapp:1.0.0 && docker push devopsramdas/sa-logic:1.0.0'
+            }
+        }
+
 	
 	stage('Archive Artifacts jar file') {
             steps {
