@@ -34,7 +34,7 @@ pipeline {
                 archiveArtifacts artifacts: '**/*.jar', followSymlinks: false
             }
         }
-	stage('Archive Artifacts jar file') {
+	stage('print fingerprint of artifact jar file') {
             steps {
 		fingerprint '**/*.jar'
             }
