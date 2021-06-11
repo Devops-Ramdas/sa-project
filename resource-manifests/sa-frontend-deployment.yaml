@@ -21,7 +21,7 @@ spec:
         app: sa-frontend                                  # 6
     spec:
       containers:
-        - image: devopsramdas/sa-frontend:1.0.0
+        - image: iaasadmin.in/develop/sa-frontend:1.0.0
           imagePullPolicy: Always                         # 7
           name: sa-frontend
           ports:
