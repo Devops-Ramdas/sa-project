@@ -6,7 +6,7 @@ metadata:
     app: sa-frontend                                 # 2
 spec:                                                # 3
   containers:
-    - image: devopsramdas/sa-frontend:1.0.0 # 4
+    - image: iaasadmin.in/production/sa-frontend:1.0.0 # 4
       name: sa-frontend                              # 5
       ports:
         - containerPort: 80                          # 6
