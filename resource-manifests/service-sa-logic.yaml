@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: sa-logic
 spec:
-  imagePullSecrets:
-    - name: harbor-registry-secret
   ports:
     - port: 80
       protocol: TCP

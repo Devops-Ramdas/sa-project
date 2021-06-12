@@ -22,6 +22,8 @@ spec:
       labels:
         app: sa-web-app
     spec:
+      imagePullSecrets:
+      - name: harbor-registry-secret
       containers:
       - image: iaasadmin.in/develop/sa-webapp:1.0.0
         imagePullPolicy: Always

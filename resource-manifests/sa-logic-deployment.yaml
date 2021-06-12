@@ -22,6 +22,8 @@ spec:
       labels:
         app: sa-logic
     spec:
+      imagePullSecrets:
+      - name: harbor-registry-secret
       containers:
         - image: iaasadmin.in/develop/sa-logic:1.0.0
           imagePullPolicy: Always
