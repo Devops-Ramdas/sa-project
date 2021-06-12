@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: sa-web-app-lb
 spec:
+  imagePullSecrets:
+    - name: harbor-registry-secret
   type: LoadBalancer
   ports:
   - port: 80
