@@ -20,11 +20,11 @@ spec:
       labels:
         app: sa-frontend                                  # 6
     spec:
-      imagePullSecrets:
-      - name: harbor-registry-secret
       containers:
         - image: iaasadmin.in/develop/sa-frontend:1.0.0
           imagePullPolicy: Always                         # 7
           name: sa-frontend
           ports:
             - containerPort: 80
+      imagePullSecrets:
+      - name: harbor-registry-secret
