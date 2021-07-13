@@ -5,8 +5,6 @@ metadata:
   labels:
     app: sa-logic
 spec:
-  imagePullSecrets:
-    - name: harbor-registry-secret
   selector:
      matchLabels:
        app: sa-logic
