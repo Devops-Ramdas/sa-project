@@ -6,11 +6,9 @@ metadata:
     app: sa-frontend
 spec:
   imagePullSecrets:
-    - name: harbor-registry-secret
+    - name: harbor
   containers:
     - image: iaasadmin.in/develop/sa-frontend:1.0.0 
       name: sa-frontend
       ports:
         - containerPort: 80
-  imagePullSecrets:
-  - name: harbor-registry-secret

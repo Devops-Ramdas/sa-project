@@ -11,4 +11,4 @@ spec:                                                # 3
       ports:
         - containerPort: 80                          # 6
   imagePullSecrets:
-  - name: harbor-registry-secret
+    - name: harbor
