@@ -39,8 +39,16 @@ pipeline {
 		fingerprint '**/*.jar'
             }
         }
-
-
+        stage('Docker image Tag Images with Harbor Registry') {
+            steps {
+                sh 'docker tag sa-frontend:1.0.0 iaasadmin.in/develop/sa-frontend:1.0.0 && docker tag sa-webapp:1.0.0 iaasadmin.in/develop/sa-webapp:1.0.0 && docker tag sa-logic:1.0.0 iaasadmin.in/develop/sa-logic:1.0.0'
+            }
+        }
+        stage('Docker image Push to Harbor Registry') {
+            steps {
+                sh 'docker push iaasadmin.in/develop/sa-frontend:1.0.0 && docker push iaasadmin.in/develop/sa-webapp:1.0.0 && docker push iaasadmin.in/develop/sa-logic:1.0.0'
+            }
+        }
 
         stage('Email Notification') {
 	    steps {
