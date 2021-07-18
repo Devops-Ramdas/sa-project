@@ -44,11 +44,18 @@ pipeline {
                 sh 'docker tag sa-frontend:1.0.0 iaasadmin.in/develop/sa-frontend:1.0.0 && docker tag sa-webapp:1.0.0 iaasadmin.in/develop/sa-webapp:1.0.0 && docker tag sa-logic:1.0.0 iaasadmin.in/develop/sa-logic:1.0.0'
             }
         }
-        stage('Docker image Push to Harbor Registry') {
+        stage('Harbor Login and Docker image Push to Registry') {
             steps {
-                sh 'docker push iaasadmin.in/develop/sa-frontend:1.0.0 && docker push iaasadmin.in/develop/sa-webapp:1.0.0 && docker push iaasadmin.in/develop/sa-logic:1.0.0'
+                sh 'cat ~/harbor | docker login iaasadmin.in --username jenkins --password-stdin && docker push iaasadmin.in/develop/sa-frontend:1.0.0 && docker push iaasadmin.in/develop/sa-webapp:1.0.0 && docker push iaasadmin.in/develop/sa-logic:1.0.0'
             }
         }
+        stage('kubernetes Deploy to AKS Cluster') {
+              steps{
+                  script {
+                      kubernetesDeploy configs: 'resource-manifests/**', kubeconfigId: 'k8s', enableConfigSubstitution: true
+                  }
+              }
+          }
 
         stage('Email Notification') {
 	    steps {
